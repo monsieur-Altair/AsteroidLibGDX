@@ -1,28 +1,21 @@
 package com.asteroid.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public class Player extends GameObject implements UIRenderObject {
+public class Player extends GameObject{
 
-    private final Image mainImage;
+    private final SimpleUIObject visual;
     private final float ROTATION_OFFSET = (float) (-Math.PI / 2f);
 
     public Player(final Texture mainTexture) {
-        super();
 
-        this.mainImage = getMainImage(mainTexture);
-        mainImage.setPosition(0,0);
+        super();
+        visual = new SimpleUIObject(mainTexture);
     }
 
-    private Image getMainImage(Texture texture) {
-        Image image = new Image(texture);
-        image.setWidth(texture.getWidth());
-        image.setHeight(texture.getWidth());
-        image.setOrigin(image.getAlign());
-        return image;
+    public SimpleUIObject getVisual() {
+        return visual;
     }
 
     @Override
@@ -30,26 +23,10 @@ public class Player extends GameObject implements UIRenderObject {
         super.update(delta);
         float angleInRad = transform.rotation.getAngleAroundRad(GameSettings.forward) + ROTATION_OFFSET;
         float angleInDegrees = (float) Math.toDegrees(angleInRad);
-        mainImage.setRotation(angleInDegrees);
+        visual.updateRotation(angleInDegrees);
 
         Vector3 translation = transform.translation;
-        mainImage.setPosition(translation.x, translation.y);
-        //Extensions.log("end pos = " + mainImage.getX() + " " + mainImage.getY());
-        //Extensions.log("end rot = "+ angleInDegrees + " " + mainImage.getRotation());
+        visual.updatePosition(translation.x, translation.y);
     }
-
-    @Override
-    public void render(final SpriteBatch batch) {
-        mainImage.draw(batch, 1f);
-    }
-
-    //@Override
-    //public Rectangle getRectangle() {
-    //    return rectangle;
-    //}
-
-    //@Override
-    //public Texture getTexture() {
-    //    return mainTexture;
-    //}
 }
+

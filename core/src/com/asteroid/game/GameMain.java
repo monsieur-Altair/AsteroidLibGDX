@@ -22,6 +22,7 @@ public class GameMain extends ApplicationAdapter {
 	private final Array<UpdateObject> updatedObjects;
 	private final ControlSystem controlSystem;
 	private final Random random;
+	private final BoundChecker boundChecker;
 
 	public GameMain(InputSystem inputSystem){
 
@@ -44,6 +45,9 @@ public class GameMain extends ApplicationAdapter {
 		disposables.add(uiRenderSystem);
 
 		factory = new ObjectFactory(assetSystem, random, uiRenderSystem, this);
+
+		boundChecker = new BoundChecker(GameSettings.TARGET_WINDOW_WIDTH, GameSettings.TARGET_WINDOW_HEIGHT);
+		updatedObjects.add(boundChecker);
 	}
 
 	@Override
@@ -56,6 +60,7 @@ public class GameMain extends ApplicationAdapter {
 		GameObject player = factory.CreatePlayer();
 		controlSystem.setTargetTransform(player.transform);
 		controlSystem.switchTo(true);
+		boundChecker.addObject(player.transform);
 	}
 
 	@Override

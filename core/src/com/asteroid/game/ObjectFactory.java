@@ -22,7 +22,7 @@ public class ObjectFactory {
         Texture[] playerTextures = assetSystem.getPlayerTextures();
         Texture randomTexture = Extensions.random(playerTextures, random);
         Player player = new Player(randomTexture);
-        renderSystem.addObject(player);
+        renderSystem.addObject(player.getVisual());
         gameMain.getUpdatedObjects().add(player);
         return player;
     }
