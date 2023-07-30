@@ -48,7 +48,7 @@ public class ControlSystem implements Disposable {
         Vector3 currentPos = targetTransform.translation;
         delta.set(lookAtPos.x - currentPos.x, lookAtPos.y - currentPos.y, lookAtPos.z - currentPos.z);
         float angle = (float) Math.atan2(delta.y, delta.x);
-        Extensions.log("angle from contr " + angle);
+        //Extensions.log("angle from contr " + angle);
         targetTransform.rotation.setFromAxisRad(GameSettings.forward, angle);
     }
 

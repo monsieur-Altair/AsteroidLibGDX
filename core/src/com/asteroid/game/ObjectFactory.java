@@ -9,7 +9,7 @@ public class ObjectFactory {
     private final AssetSystem assetSystem;
     private final Random random;
     private final UIRenderSystem renderSystem;
-    private GameMain gameMain;
+    private final GameMain gameMain;
 
     public ObjectFactory(AssetSystem assetSystem, Random random, UIRenderSystem renderSystem, GameMain gameMain){
         this.assetSystem = assetSystem;

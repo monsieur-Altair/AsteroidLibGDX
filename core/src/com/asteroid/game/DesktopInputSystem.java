@@ -71,7 +71,7 @@ public class DesktopInputSystem implements Disposable, InputSystem {
     private float getAxisValue(final float deltaTime, final int negativeKey, final int positiveKey, final float startValue) {
         float deltaAxis = startValue;
         float axisSpeed = 1f;
-        float backSpeed = 0.1f;
+        float backSpeed = 0.4f;
 
         if(input.isKeyPressed(negativeKey)) {
             deltaAxis -= axisSpeed * deltaTime;

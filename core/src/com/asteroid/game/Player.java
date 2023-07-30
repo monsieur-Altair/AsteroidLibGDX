@@ -21,18 +21,20 @@ public class Player extends GameObject implements UIRenderObject {
         Image image = new Image(texture);
         image.setWidth(texture.getWidth());
         image.setHeight(texture.getWidth());
+        image.setOrigin(image.getAlign());
         return image;
     }
 
     @Override
     public void update(final float delta) {
         super.update(delta);
-        Vector3 translation = transform.translation;
-        mainImage.setPosition(translation.x, translation.y);
-        //Extensions.log("end pos = " + mainImage.getX() + " " + mainImage.getY());
         float angleInRad = transform.rotation.getAngleAroundRad(GameSettings.forward) + ROTATION_OFFSET;
         float angleInDegrees = (float) Math.toDegrees(angleInRad);
         mainImage.setRotation(angleInDegrees);
+
+        Vector3 translation = transform.translation;
+        mainImage.setPosition(translation.x, translation.y);
+        //Extensions.log("end pos = " + mainImage.getX() + " " + mainImage.getY());
         //Extensions.log("end rot = "+ angleInDegrees + " " + mainImage.getRotation());
     }
 
