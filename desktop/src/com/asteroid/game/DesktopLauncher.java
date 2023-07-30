@@ -2,7 +2,6 @@ package com.asteroid.game;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.asteroid.game.GameMain;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
@@ -10,6 +9,6 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Asteroid");
-		new Lwjgl3Application(new GameMain(), config);
+		new Lwjgl3Application(new GameMain(new DesktopInputSystem()), config);
 	}
 }
