@@ -1,5 +1,8 @@
-package com.asteroid.game;
+package com.asteroid.game.systems;
 
+import com.asteroid.game.events.EventListener;
+import com.asteroid.game.GameSettings;
+import com.asteroid.game.gameplayLogic.Transform;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;

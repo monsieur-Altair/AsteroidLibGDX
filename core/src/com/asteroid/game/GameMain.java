@@ -1,14 +1,20 @@
 package com.asteroid.game;
 
+import com.asteroid.game.gameplayLogic.BoundChecker;
+import com.asteroid.game.gameplayLogic.GameObject;
+import com.asteroid.game.gameplayLogic.Level;
+import com.asteroid.game.gameplayLogic.UpdateObject;
+import com.asteroid.game.systems.AssetSystem;
+import com.asteroid.game.systems.CameraSystem;
+import com.asteroid.game.systems.ControlSystem;
+import com.asteroid.game.systems.InputSystem;
+import com.asteroid.game.systems.ObjectFactory;
+import com.asteroid.game.systems.UIRenderSystem;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 
-import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Random;
 
 public class GameMain extends ApplicationAdapter {
@@ -23,6 +29,8 @@ public class GameMain extends ApplicationAdapter {
 	private final ControlSystem controlSystem;
 	private final Random random;
 	private final BoundChecker boundChecker;
+
+	private Level level;
 
 	public GameMain(InputSystem inputSystem){
 
@@ -53,9 +61,11 @@ public class GameMain extends ApplicationAdapter {
 	@Override
 	public void create() {
 		inputSystem.onCreate();
-		uiRenderSystem.onCreate();
 		cameraSystem.onCreate();
+		uiRenderSystem.onCreate();
 		assetSystem.loadAll();
+
+		level = factory.CreateLevel();
 
 		GameObject player = factory.CreatePlayer();
 		controlSystem.setTargetTransform(player.transform);
@@ -83,5 +93,11 @@ public class GameMain extends ApplicationAdapter {
 		return updatedObjects;
 	}
 
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+		uiRenderSystem.onResize(width, height);
+		boundChecker.updateBounds(width, height);
+	}
 }
 

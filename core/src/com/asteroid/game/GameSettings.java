@@ -7,9 +7,10 @@ import com.badlogic.gdx.math.Vector3;
 public class GameSettings {
     public static final String PLAYER_ASSET_FOLDER = "player";
     public static final String OBSTACLES_ASSET_FOLDER = "obstacles";
+    public static final String BACKS_ASSET_FOLDER = "backs";
     public static final String TEXTURES_ASSET_FOLDER = "textures/";
 
-    public static final int TARGET_WINDOW_WIDTH = 1080;
+    public static final int TARGET_WINDOW_WIDTH = 1920;
     public static final int TARGET_WINDOW_HEIGHT = 1080;
     public static final int FPS = 60;
 

@@ -1,9 +1,12 @@
-package com.asteroid.game;
+package com.asteroid.game.gameplayLogic;
 
+import com.asteroid.game.GameSettings;
+import com.asteroid.game.gameplayLogic.GameObject;
+import com.asteroid.game.gameplayLogic.SimpleUIObject;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
 
     private final SimpleUIObject visual;
     private final float ROTATION_OFFSET = (float) (-Math.PI / 2f);
@@ -27,6 +30,7 @@ public class Player extends GameObject{
 
         Vector3 translation = transform.translation;
         visual.updatePosition(translation.x, translation.y);
+        //Extensions.log(translation.x +" "+ translation.y);
     }
 }
 

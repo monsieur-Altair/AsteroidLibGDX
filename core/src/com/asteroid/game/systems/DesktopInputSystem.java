@@ -1,5 +1,9 @@
-package com.asteroid.game;
+package com.asteroid.game.systems;
 
+import com.asteroid.game.Extensions;
+import com.asteroid.game.GameSettings;
+import com.asteroid.game.events.Event;
+import com.asteroid.game.systems.InputSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;

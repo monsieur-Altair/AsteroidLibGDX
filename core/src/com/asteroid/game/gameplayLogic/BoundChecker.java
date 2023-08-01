@@ -1,18 +1,26 @@
-package com.asteroid.game;
+package com.asteroid.game.gameplayLogic;
 
+import com.asteroid.game.gameplayLogic.Transform;
+import com.asteroid.game.gameplayLogic.UpdateObject;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 
 public class BoundChecker extends UpdateObject implements Disposable {
-    private final Vector2 xBounds;
-    private final Vector2 yBounds;
+    private Vector2 xBounds;
+    private int targetWidth;
+    private Vector2 yBounds;
+    private int targetHeight;
     private final Array<Transform> checkedObjects;
 
-    public BoundChecker(float width, float height) {
-        xBounds = new Vector2(0, width);
-        yBounds = new Vector2(0, height);
+    public BoundChecker(int targetWidth, int targetHeight) {
+        xBounds = new Vector2(0, targetWidth);
+        yBounds = new Vector2(0, targetHeight);
+
+        this.targetWidth = targetWidth;
+        this.targetHeight = targetHeight;
+
         checkedObjects = new Array<>();
     }
 
@@ -54,5 +62,23 @@ public class BoundChecker extends UpdateObject implements Disposable {
     @Override
     public void dispose() {
         checkedObjects.clear();
+    }
+
+    public void updateBounds(int width, int height) {
+        float aspect = (float) width / height;
+        float targetAspect = (float) targetWidth / targetHeight;
+        if(aspect > targetAspect)
+        {
+            float offset = (aspect - targetAspect) * targetWidth /2f;
+            xBounds = new Vector2(-offset, targetHeight * aspect - offset );
+        }
+        else
+        {
+            float offset = (targetAspect - aspect) * targetHeight /2f;
+            yBounds = new Vector2(-offset, targetWidth / aspect - offset);
+        }
+
+        //Extensions.log(" w = " +width + " h = "+height);
+        //Extensions.log(" w = " +xBounds + " h = "+yBounds);
     }
 }

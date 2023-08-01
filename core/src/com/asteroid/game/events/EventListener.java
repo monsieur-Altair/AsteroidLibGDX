@@ -1,4 +1,4 @@
-package com.asteroid.game;
+package com.asteroid.game.events;
 
 @FunctionalInterface
 public interface EventListener {

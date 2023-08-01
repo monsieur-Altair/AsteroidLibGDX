@@ -2,9 +2,9 @@ package com.asteroid.game;
 
 import android.os.Bundle;
 
+import com.asteroid.game.systems.DesktopInputSystem;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.asteroid.game.GameMain;
 
 public class AndroidLauncher extends AndroidApplication {
 

@@ -1,5 +1,6 @@
-package com.asteroid.game;
+package com.asteroid.game.systems;
 
+import com.asteroid.game.GameSettings;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 

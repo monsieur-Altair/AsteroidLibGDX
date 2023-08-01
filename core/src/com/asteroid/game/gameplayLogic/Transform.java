@@ -1,4 +1,4 @@
-package com.asteroid.game;
+package com.asteroid.game.gameplayLogic;
 
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;

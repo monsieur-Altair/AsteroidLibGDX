@@ -1,17 +1,16 @@
-package com.asteroid.game;
+package com.asteroid.game.systems;
 
+import com.asteroid.game.GameSettings;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetDescriptor;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 
 public class AssetSystem implements Disposable {
 
     private Texture[] playerTextures;
     private Texture[] obstacleTextures;
+    private Texture[] backTextures;
 
     public AssetSystem(){
     }
@@ -19,10 +18,15 @@ public class AssetSystem implements Disposable {
     public void loadAll(){
         playerTextures = loadTextures(GameSettings.PLAYER_ASSET_FOLDER);
         obstacleTextures = loadTextures(GameSettings.OBSTACLES_ASSET_FOLDER);
+        backTextures = loadTextures(GameSettings.BACKS_ASSET_FOLDER);
     }
 
     public Texture[] getPlayerTextures() {
         return playerTextures;
+    }
+
+    public Texture[] getBackTextures() {
+        return backTextures;
     }
 
     private Texture[] loadTextures(final String folderName) {
